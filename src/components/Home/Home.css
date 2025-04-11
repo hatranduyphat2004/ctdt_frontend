@@ -1,0 +1,55 @@
+/* Home.css */
+.home-container {
+	display: flex;
+	justify-content: center; /* Canh giữa theo chiều ngang */
+	align-items: center; /* Canh giữa theo chiều dọc */
+	height: 100vh; /* Chiếm toàn bộ chiều cao màn hình */
+	width: 100vw; /* Chiếm toàn bộ chiều rộng màn hình */
+	background: linear-gradient(
+		to right,
+		#6a11cb,
+		#2575fc
+	); /* Gradient background */
+	color: white;
+	text-align: center;
+}
+
+.home-heading {
+	font-size: 3.5rem; /* Kích thước chữ lớn cho tiêu đề */
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.home-description {
+	font-size: 1.5rem;
+	margin-bottom: 30px;
+}
+
+.home-actions {
+	margin-top: 30px;
+}
+
+.home-button {
+	font-size: 1.2rem;
+	padding: 12px 30px;
+	border-radius: 50px;
+	transition: background-color 0.3s, transform 0.3s;
+}
+
+.home-button:hover {
+	background-color: #4e4bdb;
+	transform: translateY(-3px);
+}
+
+.home-button.ml-3 {
+	margin-left: 15px;
+}
+
+@media (max-width: 768px) {
+	.home-heading {
+		font-size: 2.5rem; /* Giảm kích thước tiêu đề trên màn hình nhỏ */
+	}
+	.home-description {
+		font-size: 1.2rem;
+	}
+}
