@@ -1,3 +1,4 @@
 1. Pull về 
-2. npm i
-3. npm run dev
+2. cd ctdt_frontend
+3. npm i
+4. npm run dev
