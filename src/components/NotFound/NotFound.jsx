@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Button } from 'react-bootstrap';
 import './NotFound.css'; // Đảm bảo bạn đã tạo file NotFound.css để tùy chỉnh styles
+import { useSelector } from 'react-redux';
 
 const NotFound = () => {
+	const isAuthenticated = useSelector((s) => s.auth.isAuthenticated);
 	return (
 		<Container
 			className='notfound-container d-flex justify-content-center align-items-center'
@@ -16,11 +18,19 @@ const NotFound = () => {
 					The page you're looking for might have been removed or is temporarily
 					unavailable.
 				</p>
-				<Link to='/'>
-					<Button variant='primary' className='notfound-button'>
-						Go Back to Home
-					</Button>
-				</Link>
+				{isAuthenticated ? (
+					<Link to='/dashboard'>
+						<Button variant='primary' size='lg' className='home-button px-5'>
+							Dashboard
+						</Button>
+					</Link>
+				) : (
+					<Link to='/login'>
+						<Button variant='primary' size='lg' className='home-button px-5'>
+							Login
+						</Button>
+					</Link>
+				)}
 			</div>
 		</Container>
 	);

@@ -1,0 +1,17 @@
+.unauthorized-heading {
+	font-size: 6rem;
+	font-weight: bold;
+	color: #dc3545;
+}
+
+.unauthorized-message {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+.unauthorized-description {
+	font-size: 1.1rem;
+	color: #6c757d;
+	max-width: 520px;
+	margin: 0 auto 2rem auto;
+}

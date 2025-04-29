@@ -1,0 +1,57 @@
+/* overview-container */
+.overview-container {
+	padding: 20px;
+	background-color: #f0f4f8; /* Màu nền nhẹ cho toàn bộ trang */
+}
+
+/* overview-card */
+.overview-card {
+	border-radius: 10px;
+	text-align: center;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	border: 1px solid #ddd; /* Thêm viền cho các Card */
+}
+
+.overview-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.overview-card-title {
+	font-size: 18px;
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 15px;
+}
+
+.overview-card-text {
+	font-size: 24px;
+	font-weight: 600;
+	color: #007bff; /* Màu xanh cho số liệu */
+	margin-top: 10px;
+}
+
+/* Màu nền với gradient cho từng card */
+.giang-vien-card {
+	background: linear-gradient(
+		to right,
+		#eaf6ff,
+		#7fd1f2
+	); /* Gradient từ xanh nhạt đến xanh đậm */
+}
+
+.hoc-phan-card {
+	background: linear-gradient(
+		to right,
+		#e8f7d1,
+		#9cd88d
+	); /* Gradient từ xanh lá nhạt đến xanh lá đậm */
+}
+
+.chuong-trinh-card {
+	background: linear-gradient(
+		to right,
+		#fff1e6,
+		#f5bfb3
+	); /* Gradient từ cam nhạt đến cam đậm */
+}

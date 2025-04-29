@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Card, Spinner, InputGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { fakeLogin } from './authActions'; // import action login từ features/auth/authActions
+import { login } from './authActions'; // import action login từ features/auth/authActions
 import { toast } from 'react-toastify';
 import { unwrapResult } from '@reduxjs/toolkit'; // để lấy kết quả từ asyncThunk
 import { useNavigate } from 'react-router';
@@ -27,16 +27,18 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const resultAction = await dispatch(fakeLogin({ id, password }));
+			const resultAction = await dispatch(login({ id, password }));
 			const data = unwrapResult(resultAction);
 
 			// ✅ Hiển thị toast thành công
-			toast.success(`Xin chào ${data.user.name || 'người dùng'}!`);
+			toast.success(
+				`Xin chào ${data?.user?.giangvien?.hoTen || 'người dùng'}!`
+			);
 
 			// 👉 Chuyển hướng nếu cần, ví dụ:
 			navigate('/dashboard');
 		} catch (err) {
-			toast.error(err || 'Đăng nhập thất bại');
+			toast.error(err || 'Đăng nhập thất bại'); // Hiển thị thông báo lỗ
 		}
 	};
 

@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../auth/authActions';
 import {
 	Button,
 	Dropdown,
-	Nav,
 	Navbar,
 	Container,
 	Modal,
 	Form,
 	InputGroup,
 } from 'react-bootstrap';
-import { FaTimes, FaBars } from 'react-icons/fa';
-import './Dashboard.css';
 import { toast } from 'react-toastify';
+import Sidebar from './SideBar/SideBar';
+import './Dashboard.css';
 
 function Dashboard() {
 	const dispatch = useDispatch();
@@ -32,8 +31,10 @@ function Dashboard() {
 		newConfirm: false, // gộp
 	});
 
-	const handleLogout = async () => {
-		await dispatch(logout());
+	const isActive = (path) => location.pathname.includes(path);
+
+	const handleLogout = () => {
+		dispatch(logout());
 		toast.info('Đăng xuất thành công');
 		navigate('/login');
 	};
@@ -62,59 +63,17 @@ function Dashboard() {
 	return (
 		<div className='dashboard-container d-flex'>
 			{/* Sidebar */}
-			<aside
-				className={`sidebar ${isSidebarOpen ? 'open' : 'closed'} bg-secondary`}
-			>
-				<div className='sidebar-header d-flex align-items-center justify-content-between'>
-					{isSidebarOpen && <h4 className='text-white mb-0'>Dashboard</h4>}
-					<Button variant='link' className='toggle-btn' onClick={toggleSidebar}>
-						{isSidebarOpen ? <FaTimes /> : <FaBars />}
-					</Button>
-				</div>
-
-				<Nav
-					className={`sidebar-nav flex-column ${
-						isSidebarOpen ? '' : 'centered'
-					}`}
-				>
-					<Nav.Item className='mb-3'>
-						<Link className='nav-link text-white ' to='profile'>
-							{isSidebarOpen ? '👤 Trang cá nhân' : '👤'}
-						</Link>
-					</Nav.Item>
-					<Nav.Item className='mb-3'>
-						<Link className='nav-link text-white ' to='general-info'>
-							{isSidebarOpen ? '📄 Thông tin chung' : '📄'}
-						</Link>
-					</Nav.Item>
-					<Nav.Item className='mb-3'>
-						<Link className='nav-link text-white ' to='module'>
-							{isSidebarOpen ? '📚 Học phần' : '📚'}
-						</Link>
-					</Nav.Item>
-					<Nav.Item className='mb-3'>
-						<Link className='nav-link text-white ' to='lecturer'>
-							{isSidebarOpen ? '👨‍🏫 Giảng viên' : '👨‍🏫'}
-						</Link>
-					</Nav.Item>
-					<Nav.Item className='mb-3'>
-						<Link className='nav-link text-white ' to='plan-group'>
-							{isSidebarOpen ? '🗓️ Kế hoạch mở nhóm' : '🗓️'}
-						</Link>
-					</Nav.Item>
-					<Nav.Item className='mb-3'>
-						<Link className='nav-link text-white ' to='assignment'>
-							{isSidebarOpen ? '📊 Phân công' : '📊'}
-						</Link>
-					</Nav.Item>
-				</Nav>
-			</aside>
+			<Sidebar
+				isSidebarOpen={isSidebarOpen}
+				toggleSidebar={toggleSidebar}
+				isActive={isActive}
+			/>
 
 			{/* Main content */}
 			<main className='main-content w-100'>
 				<Navbar bg='light' expand='lg' className='dashboard-header px-4'>
-					<Container fluid>
-						<Navbar.Brand>Ứng dụng Quản Lý</Navbar.Brand>
+					<Container fluid className='px-0'>
+						<Navbar.Brand>Ứng dụng Quản lý chương trình đào tạo</Navbar.Brand>
 						<Dropdown align='end'>
 							<Dropdown.Toggle variant='link' id='avatar-dropdown'>
 								<img
@@ -126,7 +85,7 @@ function Dashboard() {
 
 							<Dropdown.Menu>
 								<Dropdown.Item disabled>
-									Xin chào, {user.name || 'Người dùng'}
+									Xin chào, {user?.hoTen || 'Người dùng'}
 								</Dropdown.Item>
 								<Dropdown.Item onClick={() => setShowModal(true)}>
 									Đổi mật khẩu

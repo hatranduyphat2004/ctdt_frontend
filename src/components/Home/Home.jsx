@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Container } from 'react-bootstrap';
 import './Home.css'; // Đảm bảo bạn đã tạo file Home.css để tùy chỉnh styles
+import { useSelector } from 'react-redux';
 
 const Home = () => {
+	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 	return (
 		<Container
 			className='home-container d-flex justify-content-center align-items-center'
@@ -16,11 +18,19 @@ const Home = () => {
 					information.
 				</p>
 				<div className='home-actions'>
-					<Link to='/login'>
-						<Button variant='primary' size='lg' className='home-button px-5'>
-							Login
-						</Button>
-					</Link>
+					{isAuthenticated ? (
+						<Link to='/dashboard'>
+							<Button variant='primary' size='lg' className='home-button px-5'>
+								Dashboard
+							</Button>
+						</Link>
+					) : (
+						<Link to='/login'>
+							<Button variant='primary' size='lg' className='home-button px-5'>
+								Login
+							</Button>
+						</Link>
+					)}
 					{/* <Link to='/register'>
 						<Button
 							variant='outline-primary'

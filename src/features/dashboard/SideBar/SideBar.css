@@ -1,0 +1,105 @@
+/* Sidebar container */
+.sidebar {
+	color: white;
+	height: 100vh;
+	background-color: #343a40; /* Màu nền sidebar */
+	transition: width 0.3s ease;
+	padding: 1rem;
+	width: 300px;
+	position: relative;
+	overflow: hidden;
+}
+
+/* Sidebar khi đóng lại */
+.sidebar.closed {
+	width: 70px;
+}
+
+/* Header của Sidebar */
+.sidebar-header {
+	margin-bottom: 2rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* Nút toggle */
+.toggle-btn {
+	color: white;
+	border: none;
+	font-size: 1.5rem;
+	padding: 0;
+	cursor: pointer;
+	transition: transform 0.2s ease;
+}
+
+.toggle-btn:hover {
+	transform: scale(1.2); /* Hiệu ứng khi hover vào nút */
+}
+
+/* Các mục điều hướng trong sidebar */
+.sidebar-nav .nav-item {
+	margin-bottom: 1rem;
+}
+
+.sidebar-nav .nav-link {
+	padding: 0.5rem 1rem;
+	font-size: 1.1rem;
+	color: white;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	border-radius: 5px;
+	transition: background-color 0.3s ease, padding-left 0.2s ease;
+}
+
+/* Hiệu ứng hover cho các mục trong sidebar */
+.sidebar-nav .nav-item:hover .nav-link {
+	background-color: #007bff;
+	padding-left: 1.2rem; /* Tạo hiệu ứng rộng thêm khi hover */
+}
+
+.sidebar-nav .nav-item.active .nav-link {
+	background-color: #0056b3; /* Màu khi mục được chọn */
+}
+
+/* Kiểu khi sidebar thu lại, căn giữa các mục */
+.sidebar-nav.centered .nav-link {
+	justify-content: center;
+}
+
+/* Khi sidebar đóng lại, các mục sẽ có padding nhỏ */
+.sidebar.closed .nav-link {
+	padding-left: 1rem;
+	padding-right: 1rem;
+	font-size: 1rem;
+	transition: padding 0.2s ease, font-size 0.2s ease;
+}
+
+/* Khi sidebar mở, các mục sẽ có padding lớn hơn */
+.sidebar.open .nav-link {
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+	font-size: 1.1rem;
+	transition: padding 0.2s ease, font-size 0.2s ease;
+}
+
+/* Hiệu ứng động cho các mục trong sidebar */
+.sidebar-nav .nav-item {
+	transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hiệu ứng phóng to nhẹ khi hover vào các mục */
+.sidebar-nav .nav-item:hover {
+	transform: scale(1.05);
+}
+
+/* Hiệu ứng khi sidebar thu lại, căn giữa các mục */
+.sidebar.closed .nav-link {
+	justify-content: center;
+}
+.sidebar .nav-link.active {
+	background-color: #007bff;
+	border-radius: 4px;
+	font-weight: bold;
+}
